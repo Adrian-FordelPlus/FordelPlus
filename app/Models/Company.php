@@ -51,6 +51,10 @@ class Company extends Model
                     ->withPivot('role_in_company')
                     ->withTimestamps();
     }
+    public function offers()
+    {
+        return $this->belongsToMany(Offer::class, 'company_offer')->withTimestamps();
+    }
 
 }
 
