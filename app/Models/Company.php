@@ -41,9 +41,9 @@ class Company extends Model
     // Relationship with Type (if you have a types table)
     public function type()
     {
-        return $this->belongsTo(Type::class, 'type_id');
+        return $this->belongsTo(CompanyType::class, 'type_id');
     }
-
+    
     // Relationship with Users (many-to-many through user_company table)
     public function users()
     {

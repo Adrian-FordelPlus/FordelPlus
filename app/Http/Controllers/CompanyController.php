@@ -20,7 +20,7 @@ class CompanyController extends Controller
             'cvr' => 'required|string|unique:companies,cvr',
             'b2b' => 'boolean',
             'b2c' => 'boolean',
-            'type_id' => 'required|exists:types,id',
+            'type_id' => 'required|exists:company_types,id', 
             'is_company' => 'boolean',
             'branch_code' => 'nullable|string|max:50',
         ]);
@@ -43,7 +43,7 @@ class CompanyController extends Controller
             'cvr' => 'sometimes|string|unique:companies,cvr,' . $company->id,
             'b2b' => 'boolean',
             'b2c' => 'boolean',
-            'type_id' => 'sometimes|exists:types,id',
+            'type_id' => 'sometimes|exists:company_types,id',
             'is_company' => 'boolean',
             'branch_code' => 'nullable|string|max:50',
         ]);
