@@ -6,3 +6,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('users', UserController::class);
+Route::resource('companies', CompanyController::class);
