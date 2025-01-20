@@ -54,9 +54,14 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function company()
+      /**
+     * The companies that the user belongs to.
+     */
+    public function companies()
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsToMany(Company::class, 'user_company')
+                    ->withPivot('role_in_company')
+                    ->withTimestamps();
     }
 }
 
