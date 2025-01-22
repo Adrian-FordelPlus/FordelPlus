@@ -19,10 +19,7 @@ class UserSeeder extends Seeder
             'phone_nr' => '12345678',
             'employee_id' => 'EMP-000001',
             'password' => bcrypt('password'),
-            'company_id' => 11111,
+            'company_id' => 1,
         ]);
-
-        // Create additional users using factories
-        User::factory()->count(10)->create();
     }
 }

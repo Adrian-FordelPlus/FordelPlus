@@ -18,9 +18,9 @@ class CompanyTypeSeeder extends Seeder
             ['name' => 'IT Services', 'description' => 'Information Technology services.'],
             ['name' => 'Consulting', 'description' => 'Consulting firms.'],
         ];
-
+    
         foreach ($types as $type) {
-            CompanyType::create($type);
+            CompanyType::firstOrCreate(['name' => $type['name']], $type);
         }
     }
 }

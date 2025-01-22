@@ -9,7 +9,7 @@ class CreateRolesPermissionsTable extends Migration
     public function up(): void
     {
         Schema::create('roles_permissions', function (Blueprint $table) {
-            $table->id(); // Primary key
+            $table->id(); 
             $table->timestamps();
             $table->foreignId('role_id')->cascadeOnDelete();
             $table->foreignId('permission_id')->cascadeOnDelete();

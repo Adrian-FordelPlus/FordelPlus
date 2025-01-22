@@ -12,18 +12,18 @@ class CreateCompaniesTable extends Migration
     public function up(): void
     {
         Schema::create('companies', function (Blueprint $table) {
-            $table->id('company_id'); // Primary key
-            $table->string('name'); // Company name
-            $table->string('address')->nullable(); // Address
-          //  $table->string('cvr')->unique(); // Unique company registration number
+            $table->id('company_id'); 
+            $table->string('name'); 
+            $table->string('address')->nullable(); 
+          //  $table->string('cvr')->unique(); 
             $table->string('cvr');
-            $table->boolean('b2b')->default(false); // Business-to-business flag
-            $table->boolean('b2c')->default(false); // Business-to-consumer flag
-            $table->boolean('is_company')->default(true); // Whether it’s a company or not
-            $table->string('branch_code')->nullable(); // Branch code
-            $table->string('slug'); // SEO-friendly identifier
+            $table->boolean('b2b')->default(false); 
+            $table->boolean('b2c')->default(false); 
+            $table->foreignId('type_id')->default(1)->constrained('company_types','type_id')->cascadeOnDelete();
+            $table->boolean('is_company')->default(true); 
+            $table->string('branch_code')->nullable(); 
+            $table->string('slug'); 
             $table->timestamps();
-            $table->foreignId('type_id')->constrained('company_types')->cascadeOnDelete();
         });
     }
 
