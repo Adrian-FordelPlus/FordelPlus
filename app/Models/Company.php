@@ -57,14 +57,3 @@ class Company extends Model
     }
 
 }
-
-protected static function boot()
-{
-    parent::boot();
-
-    static::creating(function ($company) {
-        if (empty($company->slug)) {
-            $company->slug = Str::slug($company->name);
-        }
-    });
-}

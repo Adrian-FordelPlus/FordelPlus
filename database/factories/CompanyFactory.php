@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\CompanyType;
 
 class CompanyFactory extends Factory
 {
@@ -26,7 +27,7 @@ class CompanyFactory extends Factory
             'cvr' => $this->faker->unique()->numerify('########'),
             'b2b' => $this->faker->boolean(),
             'b2c' => $this->faker->boolean(),
-            'type_id' => rand(1, 5), // Assuming type IDs between 1 and 5
+            'type_id' => CompanyType::inRandomOrder()->first()->id,
             'is_company' => true,
             'branch_code' => $this->faker->bothify('BR-#####'),
             'slug' => Str::slug($this->faker->company()),

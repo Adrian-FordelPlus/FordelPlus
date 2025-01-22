@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id('user_id');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -20,12 +20,12 @@ return new class extends Migration
             $table->unsignedBigInteger('role_id'); 
             $table->string('phone_nr')->nullable();
             $table->string('employee_id')->unique()->nullable();
-            $table->unsignedBigInteger('company_id')->nullable(); 
+            $table->unsignedBigInteger('company_id'); 
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('set null');
+            $table->foreign('role_id')->references('role_id')->on('roles')->onDelete('cascade');
+            $table->foreign('company_id')->references('company_id')->on('companies')->onDelete('set null');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

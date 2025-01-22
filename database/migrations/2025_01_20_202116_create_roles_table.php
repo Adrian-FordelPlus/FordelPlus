@@ -10,7 +10,7 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id('role_id'); // Primary key
-            $table->string('role_title')->unique(); // Role title
+            $table->string('role_title'); // Role title
             $table->timestamps();
         });
     }
