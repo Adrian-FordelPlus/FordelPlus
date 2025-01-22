@@ -19,14 +19,11 @@ class CreateCompaniesTable extends Migration
             $table->string('cvr');
             $table->boolean('b2b')->default(false); // Business-to-business flag
             $table->boolean('b2c')->default(false); // Business-to-consumer flag
-            // $table->unsignedBigInteger('type_id'); // Foreign key for company type
             $table->boolean('is_company')->default(true); // Whether it’s a company or not
             $table->string('branch_code')->nullable(); // Branch code
             $table->string('slug'); // SEO-friendly identifier
             $table->timestamps();
-
-            // Foreign key constraint
-            $table->foreign('type_id')->references('id')->on('company_types')->onDelete('cascade');
+            $table->foreignId('type_id')->constrained('company_types')->cascadeOnDelete();
         });
     }
 

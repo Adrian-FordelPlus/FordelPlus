@@ -12,15 +12,11 @@ class CreateUserCompanyTable extends Migration
     public function up(): void
     {
         Schema::create('user_company', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('company_id');
-            $table->string('role_in_company')->nullable();
+            $table->id(); // Primary key
+            $table->string('role_in_company');
             $table->timestamps();
-
-            // Foreign key constraints
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('company_id')->constrained('companies','company_id')->cascadeOnDelete();
         });
     }
 

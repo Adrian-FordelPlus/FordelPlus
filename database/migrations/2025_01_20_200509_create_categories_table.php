@@ -11,12 +11,9 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id('category_id'); // Primary key
             $table->string('name')->unique(); // Category name
-            $table->unsignedBigInteger('parent_category_id')->nullable(); // Self-referencing parent category
             $table->string('slug')->unique(); // SEO-friendly slug
             $table->timestamps();
-
-            // Foreign key constraint
-            $table->foreign('parent_category_id')->references('category_id')->on('categories')->onDelete('cascade');
+            $table->foreignId('parent_category_id')->nullable()->references('category_id')->constrained('categories')->cascadeOnDelete();
         });
     }
 

@@ -12,7 +12,7 @@ class CreateCompanyTypesTable extends Migration
     public function up(): void
     {
         Schema::create('company_types', function (Blueprint $table) {
-            $table->id(); 
+            $table->id('type_id'); 
             $table->string('name'); 
             $table->text('description')->nullable(); // Optional 
             $table->timestamps();
