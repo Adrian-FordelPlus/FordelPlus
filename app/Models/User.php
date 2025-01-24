@@ -30,7 +30,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role_id',
+        'company_id',
+        'phone_nr',
+        'employee_id',
         'password',
+        'current_team_id',
+        'profile_photo_path',
     ];
 
     /**
@@ -65,5 +71,19 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+
+      /**
+     * The companies that the user belongs to.
+     */
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class, 'user_company')
+                    ->withPivot('role_in_company')
+                    ->withTimestamps();
     }
 }
