@@ -34,6 +34,10 @@ class UserFactory extends Factory
             'two_factor_secret' => null,
             'two_factor_recovery_codes' => null,
             'remember_token' => Str::random(10),
+            'role_id' => 1, // Default role
+            'company_id' => null, // Default to no company
+            'phone_nr' => fake()->phoneNumber(),
+            'employee_id' => strtoupper(Str::random(8)),
             'profile_photo_path' => null,
             'current_team_id' => null,
         ];

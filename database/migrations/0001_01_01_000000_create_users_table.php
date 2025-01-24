@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('email');
+            $table->timestamp('email_verified_at')->nullable(); 
             $table->foreignId('role_id')->constrained('roles', 'role_id')->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies', 'company_id')->nullOnDelete();
             $table->string('name');
@@ -21,7 +22,7 @@ return new class extends Migration
             $table->string('employee_id')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
+            $table->foreignId('current_team_id')->nullable()->constrained('teams', 'id')->nullOnDelete();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
