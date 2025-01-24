@@ -12,7 +12,8 @@ class UserSeeder extends Seeder
     {
         $role = Role::first(); // Get the first role, assuming roles exist
 
-        User::create([
+        // User::create([
+        User::factory()->withPersonalTeam()->create([
             'email' => 'admin@example.com',
             'role_id' => $role->role_id,
             'name' => 'Admin User',
