@@ -22,3 +22,11 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+Route::resource('users', UserController::class);
+Route::resource('companies', CompanyController::class);
+Route::resource('company-types', CompanyTypeController::class)->only(['index', 'show']);
+Route::resource('offers', OfferController::class);
+Route::resource('categories', CategoryController::class);
+Route::get('roles', [PermissionsController::class, 'getRoles']);
+Route::get('permissions', [PermissionsController::class, 'getPermissions']);
