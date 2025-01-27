@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable(); 
+            $table->boolean('is_superuser')->default(false); 
             $table->foreignId('role_id')->constrained('roles', 'role_id')->cascadeOnDelete();
             $table->foreignId('company_id')->nullable()->constrained('companies', 'company_id')->nullOnDelete();
             $table->string('name');
