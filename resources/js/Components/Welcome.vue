@@ -4,7 +4,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import { usePage } from '@inertiajs/vue3'; // To access user data from Laravel
 
 // Access user data from the Inertia page props
-const user = computed(() => usePage().props.auth.user);
+const user = computed(() => usePage().props.auth.user || {});
 
 console.log(user);
 // Modals visibility state
@@ -106,7 +106,9 @@ const categories = [
                         >
                             Cancel
                         </button>
-                        <button type="submit" class="btn-primary">Save</button>
+                        <button type="submit" class="btn-primary">
+                            Invite
+                        </button>
                     </div>
                 </form>
             </div>
@@ -136,7 +138,9 @@ const categories = [
                         >
                             Cancel
                         </button>
-                        <button type="submit" class="btn-primary">Save</button>
+                        <button type="submit" class="btn-primary">
+                            Invite
+                        </button>
                     </div>
                 </form>
             </div>
